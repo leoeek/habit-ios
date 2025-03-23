@@ -59,6 +59,6 @@ extension SplashView {
 }
 
 #Preview {
-    let viewModel = SplashViewModel()
+    let viewModel = SplashViewModel(interactor: SplahInteractor())
     SplashView(viewModel: viewModel)
 }

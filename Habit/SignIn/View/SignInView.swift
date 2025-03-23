@@ -11,9 +11,8 @@ struct SignInView: View {
     
     @ObservedObject var viewModel: SignInViewModel
     
-
     @State var action: Int? = 0
-    @State var navigationHidden = true
+    @State var navigationHidden = true    
     
     var body: some View {
         
@@ -35,6 +34,8 @@ struct SignInView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .padding(.horizontal, 48)
+                            
+                            
                             
                             Text("Login")
                                 .foregroundColor(.orange)
@@ -72,6 +73,12 @@ struct SignInView: View {
                     .padding(.horizontal, 32)
                     .navigationBarTitle("Login", displayMode: .inline)
                     .navigationBarHidden(navigationHidden)
+            }
+            .onAppear {
+                self.navigationHidden = true
+            }
+            .onDisappear {
+                self.navigationHidden = false
             }
         }
     }
