@@ -10,7 +10,7 @@ import Combine
 
 class SignInInteractor {
     
-    private let remote: RemoteDataSource = .shared
+    private let remote: SignInRemoteDataSource = .shared
 //    private let local: LocalDataSource
     
 }
