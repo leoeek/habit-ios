@@ -22,6 +22,7 @@ class SignUpRemoteDataSource {
             
             WebService.call(
                 path: .postUser,
+                method: .post,
                 body: request
             ) { result in
               switch result {
