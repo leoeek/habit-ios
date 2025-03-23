@@ -1,5 +1,5 @@
 //
-//  RemotoDataSource.swift
+//  SplashRemoteDataSource.swift
 //  Habit
 //
 //  Created by Leonardo Lima Procópio on 23/03/25.
@@ -8,21 +8,18 @@
 import Foundation
 import Combine
 
-class SignInRemoteDataSource {
+class SplashRemoteDataSource {
     //padrao singleton
     
-    static var shared: SignInRemoteDataSource = SignInRemoteDataSource()
+    static var shared: SplashRemoteDataSource = SplashRemoteDataSource()
     
     private init() {}
     
-    func login(request: SignInRequest) -> Future<SignInResponse, AppError> {
+    func refreshToken(request: RefreshRequest) -> Future<SignInResponse, AppError> {
         
         return Future<SignInResponse, AppError> { promise in
         
-            WebService.call(path: .login, params: [
-              URLQueryItem(name: "username", value: request.email),
-              URLQueryItem(name: "password", value: request.password)
-            ]) { result in
+            WebService.call(path: .refreshToken, method: .put, body: request) { result in
               switch result {
                 case .failure(let error, let data):
                   if let data = data {
